@@ -18,10 +18,10 @@
             <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><img src="../assets/img/login.png"></div>
             <div class="col" style="height: 500px;">
                 <h1 style="color: #6f463d;margin: 35px;margin-top: 45px;">Login</h1>
-                <form>
-                    <div class="form-group" style="margin-right: 35px;margin-left: 35px;"><label style="margin-top: 20px;color: #6f463d;">Email</label><input class="form-control" type="email"><label style="margin-top: 20px;color: #6f463d;">Password</label><input class="form-control" type="password"></div>
+                <form method="post" action="/login">
+                    <div class="form-group" style="margin-right: 35px;margin-left: 35px;"><label style="margin-top: 20px;color: #6f463d;">Email</label><input class="form-control" type="email" name="Email"><label style="margin-top: 20px;color: #6f463d;">Password</label><input class="form-control" type="password" name="Password"></div>
+                    <div class="d-xl-flex justify-content-xl-center align-items-xl-center"><button class="btn btn-primary" style="background: #f1c756;margin-top: 20px;">Login</button></div>
                 </form>
-                <div class="d-xl-flex justify-content-xl-center align-items-xl-center"><button class="btn btn-primary" type="button" style="background: #f1c756;margin-top: 20px;">Login</button></div>
                 <div class="d-xl-flex justify-content-xl-center align-items-xl-center"><a href="/register" style="color: #f1c756;margin: 35px;">Not registrated? Create an account!</a></div>
             </div>
         </div>
