@@ -33,11 +33,11 @@ We are 2 software engineering students that had to make a project for a course w
 
 Our main front-end designer is Stephanie Staykova: 
  * github: https://github.com/stephie306
- * LinkedIn: 
+ * LinkedIn: https://www.linkedin.com/in/stephanie-staykova-65917b210/
  
 Stefan Bosev mostly managed the backend.
   * github: https://github.com/StefanBosev
-  * LinkedIn: 
+  * LinkedIn: https://www.linkedin.com/in/стефан-босев-b3882a1b0
 
 ## Licence
 
