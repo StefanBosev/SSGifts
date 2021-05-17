@@ -72,17 +72,20 @@ class User:
     def verify_password(self, new_password):
         return self.password == User.hash_password(new_password)
 
-    def generate_token(self):
-        s = Serializer(SECRET_KEY, expires_in=1000)
-        return s.dumps({'email': self.email})
-
-    @staticmethod
-    def verify_token(token):
-        s = Serializer(SECRET_KEY)
-        try:
-            s.loads(token)
-        except SignatureExpired:
-            return False
-        except BadSignature:
-            return False
+    @property
+    def is_active(self):
         return True
+
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        try:
+            return self.username
+        except AttributeError:
+            raise NotImplementedError('No `username` attribute - override `get_id`')
