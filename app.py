@@ -2,13 +2,11 @@ import os
 from flask import Flask, send_from_directory, render_template, redirect, url_for, request, jsonify
 from flask_socketio import SocketIO
 from flask_restful import Api, Resource, reqparse
-from flask_cors import CORS  # comment this on deployment
 from src.user import User
 from functools import wraps
 import json
 
 app = Flask(__name__, static_url_path='', static_folder='static', template_folder='static/html/')
-CORS(app)  # comment this on deployment
 api = Api(app)
 socket = SocketIO(app)
 
@@ -26,6 +24,12 @@ def require_login(func):
 def homepage():
     return render_template('index.html')
 
+@app.route('/events', methods=['GET', 'POST'])
+@require_login
+def events():
+    if request.method == 'GET':
+        return render_template('events.html')
+    return render_template('failed_login.html')
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -37,13 +41,11 @@ def login():
         user = User.find_by_email(email)
 
         if not user or not user.verify_password(password):
-            # app.logger.warn('%s is NOT logged!', username)
             return jsonify({'token': None})
 
-        # app.logger.info('%s logged in successfully', username)
         token = user.generate_token()
-        jsonify({'token': token.decode('ascii')})
-        return redirect("/")
+        return jsonify({'token': token.decode('ascii')})
+        # return redirect('/')
 
 
 @app.route('/register', methods=['GET', 'POST'])
