@@ -86,6 +86,6 @@ class User:
 
     def get_id(self):
         try:
-            return self.username
+            return self.email
         except AttributeError:
-            raise NotImplementedError('No `username` attribute - override `get_id`')
+            raise NotImplementedError('No `email` attribute - override `get_id`')
