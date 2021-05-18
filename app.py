@@ -5,6 +5,7 @@ from flask_login import LoginManager, login_user, logout_user
 from flask_login.utils import login_required
 from flask_restful import Api, Resource, reqparse
 from src.user import User
+from src.events import Event
 from functools import wraps
 import json
 
@@ -24,10 +25,6 @@ def user_loader(email):
 def logout():
     logout_user()
     return redirect("/")
-
-@app.route("/")
-def homepage():
-    return render_template('index.html')
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -64,12 +61,27 @@ def register():
         user = User(*values).create()
         login_user(user)
         return redirect('/')
-
-@app.route('/events', methods=['GET', 'POST'])
+  
+@app.route("/")
+def homepage():
+    return render_template('index.html')
+  
+@app.route('/events')
 @login_required
 def events():
-    if request.method == 'GET':
-        return render_template('events.html')
+    return render_template('events.html')
+    
+
+@app.route('/events/all')
+@login_required
+def list_events():
+    response = app.response_class(
+        response = json.dumps(Event.all()),
+        status = 200,
+        mimetype = 'application/json'
+    )
+    return response
+
 
 if __name__ == '__main__':
     app.run(debug=True)
