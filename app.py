@@ -3,6 +3,7 @@ from flask import Flask, send_from_directory, render_template, redirect, url_for
 from flask_socketio import SocketIO
 from flask_restful import Api, Resource, reqparse
 from src.user import User
+from src.events import Event
 from functools import wraps
 import json
 
@@ -24,12 +25,21 @@ def require_login(func):
 def homepage():
     return render_template('index.html')
 
-@app.route('/events', methods=['GET', 'POST'])
-@require_login
+@app.route('/events')
+# @require_login
 def events():
-    if request.method == 'GET':
-        return render_template('events.html')
-    return render_template('failed_login.html')
+    return render_template('events.html')
+    
+
+@app.route('/events/all')
+# @require_login
+def list_events():
+    response = app.response_class(
+        response = json.dumps(Event.all()),
+        status = 200,
+        mimetype = 'application/json'
+    )
+    return response
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():

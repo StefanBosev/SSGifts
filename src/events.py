@@ -24,12 +24,18 @@ class Event:
                 ''', self.id)
 
     @staticmethod
+    def all():
+        with DB() as db:
+            all = db.execute('SELECT * FROM Event').fetchall()
+            return [Event(*one) for one in all] 
+
+    @staticmethod
     def find_by_id(id):
         with DB() as db:
             values = db.execute('''
                 SELECT id, event_end_date, name, price_low_border, price_high_border FROM Event
                 WHERE event.id = ?
-            ''', (id,).)fetchone()
+            ''', (id,)).fetchone()
 
             if values:
                 return Event(*values)
