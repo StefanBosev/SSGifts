@@ -1,11 +1,11 @@
 import os
 from flask import Flask, send_from_directory, render_template, redirect, url_for, request, jsonify
 from flask_socketio import SocketIO
-from flask_login import LoginManager, login_user, logout_user
+from flask_login import LoginManager, login_user, logout_user, current_user
 from flask_login.utils import login_required
 from flask_restful import Api, Resource, reqparse
-from src.user import User
-from src.events import Event
+from src.user import User, UserEncoder
+from src.events import Event, EventEncoder
 from functools import wraps
 import json
 
@@ -76,7 +76,7 @@ def events():
 @login_required
 def list_events():
     response = app.response_class(
-        response = json.dumps(Event.all()),
+        response = json.dumps(Event.all(), indent=2, cls=EventEncoder),
         status = 200,
         mimetype = 'application/json'
     )
@@ -87,6 +87,15 @@ def list_events():
 def profile():
     return render_template('profile.html')
 
-    
+@app.route('/profile/my')
+@login_required
+def my_profile():
+    response = app.response_class(
+        response = json.dumps(current_user, indent=2, cls=UserEncoder),
+        status = 200,
+        mimetype = 'application/json'
+    )
+    return response
+
 if __name__ == '__main__':
     app.run(debug=True)

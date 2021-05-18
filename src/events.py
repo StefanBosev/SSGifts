@@ -1,7 +1,8 @@
 from src.database import DB
+from json import JSONEncoder
 
 class Event:
-    def __init__(id, event_end_date, name, price_low_border, price_high_border):
+    def __init__(self, id, event_end_date, name, price_low_border, price_high_border):
         self.id = id
         self.event_end_date = event_end_date
         self.name = name
@@ -41,3 +42,7 @@ class Event:
                 return Event(*values)
 
             return None
+
+class EventEncoder(JSONEncoder):
+    def default(self, o):
+        return o.__dict__
