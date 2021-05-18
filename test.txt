@@ -1,0 +1,1 @@
+This file is only for detecting the remote branch. Delete after adding useful files.
