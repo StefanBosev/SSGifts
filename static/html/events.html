@@ -1,1 +1,17 @@
-Successfully entered event page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  {% for event in events %}
+    <p>Name: {{ event[1] }}</p>
+    <p>Start day: {{ event[2] }}</p>
+    <p>End day: {{ event[3] }}</p>
+    <p>High Prise: {{ event[4] }}</p>
+    <p>Low Price: {{ event[5] }}</p>
+    <hr>
+  {% endfor %}
+</body>
+</html>
