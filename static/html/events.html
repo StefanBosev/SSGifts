@@ -1,1 +1,49 @@
-Successfully entered event page
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Events</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/untitled-8.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg sticky-top shadow-lg" id="mainNav" style="background-color: #d7721c;">
+        <div class="container"><a class="navbar-brand" href="#page-top" style="color: #ffe5c4;">SSGifts</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-image: url('bg.jpg');"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto text-uppercase">
+                  {% if current_user.is_authenticated %}
+                  {% if current_user.admin %}
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/admin">Admin Panel</a></li>
+                  {% endif %}
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/events">Events</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/logout">Logout</a></li>
+                {% else %}
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/events">Events</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">Login</a></li>
+                {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% for event in events %}
+      <p>Name: {{ event[1] }}</p>
+      <p>Start day: {{ event[2] }}</p>
+      <p>End day: {{ event[3] }}</p>
+      <p>High Prise: {{ event[4] }}</p>
+      <p>Low Price: {{ event[5] }}</p>
+      <hr>
+    {% endfor %}
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/agency.js"></script>
+</body>
+
+</html>

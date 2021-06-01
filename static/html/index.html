@@ -17,8 +17,16 @@
         <div class="container"><a class="navbar-brand" href="#page-top" style="color: #ffe5c4;">SSGifts</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-image: url('bg.jpg');"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto text-uppercase">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/events">Events</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">Login</a></li>
+                    {% if current_user.is_authenticated %}
+                  {% if current_user.admin %}
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/admin">Admin Panel</a></li>
+                  {% endif %}
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/events">Events</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/logout">Logout</a></li>
+                {% else %}
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/events">Events</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">Login</a></li>
+                {% endif %}
                 </ul>
             </div>
         </div>
