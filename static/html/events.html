@@ -14,7 +14,6 @@
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg sticky-top shadow-lg" id="mainNav" style="background-color: #d7721c;">
-        <div class="container"><a class="navbar-brand" href="#page-top" style="color: #ffe5c4;">SSGifts</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-image: url('bg.jpg');"><i class="fa fa-bars"></i></button>
         <div class="container"><a class="navbar-brand" href="/" style="color: #ffe5c4;">SSGifts</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-image: url('bg.jpg');"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto text-uppercase">
@@ -32,15 +31,6 @@
             </div>
         </div>
     </nav>
-
-    {% for event in events %}
-      <p>Name: {{ event[1] }}</p>
-      <p>Start day: {{ event[2] }}</p>
-      <p>End day: {{ event[3] }}</p>
-      <p>High Prise: {{ event[4] }}</p>
-      <p>Low Price: {{ event[5] }}</p>
-      <hr>
-    {% endfor %}
 
     <div class="container shadow" style="background: #ffeaba;width: 961px;border-radius: 15px;margin-top: 45px;margin-bottom: 45px;">
       {% for event in events %}
