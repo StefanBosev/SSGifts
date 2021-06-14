@@ -8,10 +8,11 @@ conn.cursor().execute(
     '''
     CREATE TABLE IF NOT EXISTS Event (
         event_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        name TEXT NOT NULL,
+        event_start_date TEXT NOT NULL,
         event_end_date TEXT NOT NULL,
-        price_low_border INTEGER,
         price_high_border INTEGER,
-        name TEXT NOT NULL
+        price_low_border INTEGER
     )
     '''
 )
@@ -28,7 +29,19 @@ conn.cursor().execute(
         password TEXT NOT NULL,
         address TEXT,
         event_id INTEGER,
+        admin NUMERIC default 0,
         FOREIGN KEY(event_id) REFERENCES Event(id)
+    )
+    '''
+)
+
+conn.cursor().execute(
+    '''
+    CREATE TABLE IF NOT EXISTS Ratings (
+        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        rated_user_id INTEGER NOT NULL,
+        FOREIGN KEY(rated_user_id) REFERENCES User(id),
+        grade REAL CHECK(grade > 0 && grade <= 5)
     )
     '''
 )

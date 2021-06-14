@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/untitled-8.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg shadow-lg" id="mainNav" style="background-color: #d7721c;height: 85.275px;">
+        <div class="container"><a class="navbar-brand" href="/" style="color: #ffe5c4;">SSGifts</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-image: url('bg.jpg');"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto text-uppercase">
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/events">Events</a></li>
+                  {% if current_user.is_authenticated %}
+                    {% if current_user.admin %}
+                      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/admin">Admin Panel</a></li>
+                    {% endif %}
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/logout">Logout</a></li>
+                  {% else %}
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">Login</a></li>
+                  {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="row" style="margin: 20px;padding: -14px;">
+        <div class="col">
+            <h1 style="margin: 10px;color: #6f463d;font-size: 40px;">Create Event</h1>
+            <form method="POST" action="/admin">
+                <div class="form-group">
+                    <label style="margin-top: 10px;color: #6f463d;">Event name</label><input class="form-control" type="text" name="name">
+                    <label style="margin-top: 10px;color: #6f463d;">Start date</label><input class="form-control" type="date" name="event_start_date">
+                    <label style="margin-top: 10px;color: #6f463d;">End date</label><input class="form-control" type="date" name="event_end_date">
+                    <label style="margin-top: 10px;color: #6f463d;">Price&nbsp;(High&nbsp;Border)<br></label><input class="form-control" type="number" name="price_high_border">
+                    <label style="margin-top: 10px;color: #6f463d;">Price&nbsp;(Low&nbsp;Border)<br></label><input class="form-control" type="number" name="price_low_border">
+                </div>
+                <div class="d-xl-flex justify-content-xl-center align-items-xl-center"><button class="btn btn-primary" style="background: #f1c756;width: 110px;height: 52px;margin-top: 20px;font-size: 18px;">Create</button></div>
+            </form>
+        </div>
+        <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><img src="../assets/img/admin.png" style="width: 470px;"></div>
+    </div>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/agency.js"></script>
+</body>
+
+</html>
