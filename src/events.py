@@ -1,4 +1,5 @@
 from src.database import DB
+from json import JSONEncoder
 
 
 class Event:
@@ -42,5 +43,9 @@ class Event:
             
             if values:
                 return Event(*values)
-            
+
             return None
+
+class EventEncoder(JSONEncoder):
+    def default(self, o):
+        return o.__dict__

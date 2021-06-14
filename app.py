@@ -5,8 +5,8 @@ from flask_socketio import SocketIO
 from flask_login import LoginManager, login_user, logout_user, current_user
 from flask_login.utils import login_required
 from flask_restful import Api, Resource, reqparse
-from src.user import User
-from src.events import Event
+from src.user import User, UserEncoder
+from src.events import Event, EventEncoder
 from functools import wraps
 import json
 
@@ -120,6 +120,20 @@ def admin_panel():
             
             return redirect('/')
 
+@app.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html')
+
+@app.route('/profile/my')
+@login_required
+def my_profile():
+    response = app.response_class(
+        response = json.dumps(current_user, indent=2, cls=UserEncoder),
+        status = 200,
+        mimetype = 'application/json'
+    )
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True)

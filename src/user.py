@@ -1,5 +1,6 @@
 import hashlib
 
+from json import JSONEncoder
 from src.database import DB
 from itsdangerous import (
         TimedJSONWebSignatureSerializer as Serializer,
@@ -90,3 +91,7 @@ class User:
             return self.email
         except AttributeError:
             raise NotImplementedError('No `email` attribute - override `get_id`')
+
+class UserEncoder(JSONEncoder):
+    def default(self, o):
+        return o.__dict__
