@@ -10,7 +10,7 @@ from itsdangerous import (
 SECRET_KEY = "YwY[IA,LWgZxxCmX8Mug;t2Do}}1?%Fd$:2zx!mKP9#52F[>IQb_I2aek!e,ktV"
 
 class User:
-    def __init__(self, id, first_name, last_name, password, age, gender, email, address):
+    def __init__(self, id, first_name, last_name, password, age, gender, email, address, admin):
         self.id = id
         self.first_name = first_name
         self.last_name = last_name
@@ -19,12 +19,13 @@ class User:
         self.gender = gender
         self.email = email
         self.address = address
+        self.admin = admin
 
     def create(self):
         with DB() as db:
-            values = (self.first_name, self.last_name, self.age, self.gender, self.email, self.password, self.address)
+            values = (self.first_name, self.last_name, self.age, self.gender, self.email, self.password, self.address, self.admin)
             db.execute('''
-                INSERT INTO User(user_first_name, user_last_name, age, gender, user_mail, password, address) VALUES(?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO User(user_first_name, user_last_name, age, gender, user_mail, password, address, admin) VALUES(?, ?, ?, ?, ?, ?, ?, ?)
                 ''', values)
 
             return self
@@ -59,7 +60,7 @@ class User:
     def find_by_email(email):
         with DB() as db:
             values = db.execute('''
-                SELECT id, user_first_name, user_last_name, password, age, gender, user_mail, address FROM User WHERE user_mail = ?
+                SELECT id, user_first_name, user_last_name, password, age, gender, user_mail, address, admin FROM User WHERE user_mail = ?
             ''', (email,)).fetchone()
             if values:
                 return User(*values)
