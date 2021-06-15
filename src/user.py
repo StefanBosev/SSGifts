@@ -90,6 +90,26 @@ class User:
     def get_user_first_name(self):
         return self.first_name
 
+    @property
+    def get_user_last_name(self):
+        return self.last_name
+
+    @property
+    def get_user_age(self):
+        return self.age
+
+    @property
+    def get_user_gender(self):
+        return self.gender
+
+    @property
+    def get_user_mail(self):
+        return self.email
+
+    @property
+    def get_user_address(self):
+        return self.address
+
 
     def get_id(self):
         try:

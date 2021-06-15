@@ -38,18 +38,18 @@
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col">
-                            <p>First name:&nbsp;<br></p>
-                            <p>Last name:&nbsp;<br></p>
+                            <p>First name: {{ current_user.get_user_first_name }} &nbsp;<br></p>
+                            <p>Last name: {{ current_user.get_user_last_name }} &nbsp;<br></p>
                         </div>
                     </div>
-                    <p>Email:&nbsp;<br></p>
+                    <p>Email: {{ current_user.get_user_age }} &nbsp;<br></p>
                     <div class="form-row">
                         <div class="col">
-                            <p>Gender:&nbsp;<br></p>
-                            <p>Age:&nbsp;</p>
+                            <p>Gender: {{ current_user.get_user_gender }} &nbsp;<br></p>
+                            <p>Age: {{ current_user.get_user_age }} &nbsp;</p>
                         </div>
                     </div>
-                    <p>Address:&nbsp;<br></p>
+                    <p>Address: {{ current_user.get_user_address }} &nbsp;<br></p>
                     <div class="d-xl-flex justify-content-xl-center align-items-xl-center"><button class="btn btn-primary d-xl-flex justify-content-xl-center align-items-xl-center">Logout</button></div>
                 </div>
             </form>
