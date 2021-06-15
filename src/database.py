@@ -40,8 +40,9 @@ conn.cursor().execute(
     CREATE TABLE IF NOT EXISTS Ratings (
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         rated_user_id INTEGER NOT NULL,
-        FOREIGN KEY(rated_user_id) REFERENCES User(id),
-        grade REAL CHECK(grade > 0 && grade <= 5)
+        grade_sum REAL,
+        num_of_voted_people INTEGER DEFAULT 0,
+        FOREIGN KEY(rated_user_id) REFERENCES User(id)
     )
     '''
 )
