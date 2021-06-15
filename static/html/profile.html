@@ -1,1 +1,64 @@
-This is the profile page
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>SSGifts</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/untitled-8.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg sticky-top shadow-lg" id="mainNav" style="background-color: #d7721c;">
+        <div class="container"><a class="navbar-brand" href="/" style="color: #ffe5c4;">SSGifts</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-image: url('bg.jpg');"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto text-uppercase">
+                    {% if current_user.is_authenticated %}
+                  {% if current_user.admin %}
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/admin">Admin Panel</a></li>
+                  {% endif %}
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/events">Events</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/profile">Profile</a></li>
+                {% else %}
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/events">Events</a></li>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">Login</a></li>
+                {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="row" style="margin: 20px;padding: -14px;">
+        <div class="col">
+            <h1 style="margin: 35px;color: #6f463d;">Profile Info</h1>
+            <form>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col">
+                            <p>First name:&nbsp;<br></p>
+                            <p>Last name:&nbsp;<br></p>
+                        </div>
+                    </div>
+                    <p>Email:&nbsp;<br></p>
+                    <div class="form-row">
+                        <div class="col">
+                            <p>Gender:&nbsp;<br></p>
+                            <p>Age:&nbsp;</p>
+                        </div>
+                    </div>
+                    <p>Address:&nbsp;<br></p>
+                    <div class="d-xl-flex justify-content-xl-center align-items-xl-center"><button class="btn btn-primary d-xl-flex justify-content-xl-center align-items-xl-center" type="button">Logout</button></div>
+                </div>
+            </form>
+        </div>
+        <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><img src="../assets/img/profileimg.png"></div>
+    </div>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/agency.js"></script>
+</body>
+
+</html>
