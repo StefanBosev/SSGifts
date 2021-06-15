@@ -86,6 +86,11 @@ class User:
     def is_anonymous(self):
         return False
 
+    @property
+    def get_user_first_name(self):
+        return self.first_name
+
+
     def get_id(self):
         try:
             return self.email
