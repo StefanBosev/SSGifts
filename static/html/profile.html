@@ -32,24 +32,24 @@
         </div>
     </nav>
     <div class="row" style="margin: 20px;padding: -14px;">
-        <div class="col">
+        <div class="col" style="padding-left: 70px;">
             <h1 style="margin: 35px;color: #6f463d;">Profile Info</h1>
             <form action="/logout">
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col">
-                            <p>First name: {{ current_user.get_user_first_name }} &nbsp;<br></p>
-                            <p>Last name: {{ current_user.get_user_last_name }} &nbsp;<br></p>
+                            <p style="padding: 5px;">First name: {{ current_user.get_user_first_name }} &nbsp;<br></p>
+                            <p style="padding: 5px;">Last name: {{ current_user.get_user_last_name }} &nbsp;<br></p>
                         </div>
                     </div>
-                    <p>Email: {{ current_user.get_user_age }} &nbsp;<br></p>
+                    <p style="padding: 5px;">Email: {{ current_user.get_user_age }} &nbsp;<br></p>
                     <div class="form-row">
                         <div class="col">
-                            <p>Gender: {{ current_user.get_user_gender }} &nbsp;<br></p>
-                            <p>Age: {{ current_user.get_user_age }} &nbsp;</p>
+                            <p style="padding: 5px;">Gender: {{ current_user.get_user_gender }} &nbsp;<br></p>
+                            <p style="padding: 5px;">Age: {{ current_user.get_user_age }} &nbsp;</p>
                         </div>
                     </div>
-                    <p>Address: {{ current_user.get_user_address }} &nbsp;<br></p>
+                    <p style="padding: 5px;">Address: {{ current_user.get_user_address }} &nbsp;<br></p>
                     <div class="d-xl-flex justify-content-xl-center align-items-xl-center"><button class="btn btn-primary d-xl-flex justify-content-xl-center align-items-xl-center">Logout</button></div>
                 </div>
             </form>
