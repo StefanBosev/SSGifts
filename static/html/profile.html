@@ -10,11 +10,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
     <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/untitled-8.css">
+
+    <style type="text/css">
+        p.title {  padding: 5px; color: #89674c; font-weight: bold; }
+        span.info {  padding: 5px;color: #6f463d; }
+        </style>
 </head>
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg sticky-top shadow-lg" id="mainNav" style="background-color: #d7721c;">
-        <div class="container"><a class="navbar-brand" href="/" style="color: #ffe5c4;">SSGifts</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-image: url('bg.jpg');"><i class="fa fa-bars"></i></button>
+        <div class="container"><a class="navbar-brand" href="#page-top" style="color: #ffe5c4;">SSGifts</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-image: url('bg.jpg');"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto text-uppercase">
                     {% if current_user.is_authenticated %}
@@ -33,28 +38,34 @@
     </nav>
     <div class="row" style="margin: 20px;padding: -14px;">
         <div class="col" style="padding-left: 70px;">
-            <h1 style="margin: 35px;color: #6f463d;">Profile Info</h1>
-            <form action="/logout">
-                <div class="form-group">
+            <h1 class="d-xl-flex justify-content-xl-center" style="margin: 35px;color: #6f463d;width: 420.1px;margin-left: 50px;">Profile Info</h1>
+            <form style="margin: 15px;" action="/logout">
+                <div class="form-group" style="margin: 20px;padding: 0px;margin-left: 34px;width: 420.1px;">
                     <div class="form-row">
-                        <div class="col">
-                            <p style="padding: 5px;">First name: {{ current_user.get_user_first_name }} &nbsp;<br></p>
-                            <p style="padding: 5px;">Last name: {{ current_user.get_user_last_name }} &nbsp;<br></p>
+                        <div class="col" style="width: 420.1px;">
+                            {% if current_user.get_user_gender == "Male" %}
+                                <p style="color: #6f463d;font-weight: bold;padding: 14px;margin-bottom: 0px;width: 420px;"><img src="../assets/img/male.png" style="width: 55px;margin-right: 10px;"> {{ current_user.get_user_first_name }} &nbsp;{{ current_user.get_user_last_name }}  &nbsp;</p>
+                            {% else %}
+                                <p style="color: #6f463d;font-weight: bold;padding: 14px;margin-bottom: 0px;width: 420px;"><img src="../assets/img/female.png" style="width: 55px;margin-right: 10px;"> {{ current_user.get_user_first_name }} &nbsp;{{ current_user.get_user_last_name }}  &nbsp;</p>
+                            {% endif %}
+
                         </div>
                     </div>
-                    <p style="padding: 5px;">Email: {{ current_user.get_user_mail }} &nbsp;<br></p>
+                    <p style="color: #6f463d;font-size: 15px;padding-top: 35px;"><i class="fa fa-user"></i>&nbsp;About</p>
+                    <hr style="margin-top: -15px;margin-bottom: 20px;">
+                    <p class="title">Email:  <span class="info">{{ current_user.get_user_mail }}</span> &nbsp;<br></p>
                     <div class="form-row">
-                        <div class="col">
-                            <p style="padding: 5px;">Gender: {{ current_user.get_user_gender }} &nbsp;<br></p>
-                            <p style="padding: 5px;">Age: {{ current_user.get_user_age }} &nbsp;</p>
+                        <div class="col" style="width: 420.1px;">
+                            <p class="title">Gender:  <span class="info">{{ current_user.get_user_gender }}</span> &nbsp;<br></p>
+                            <p class="title">Age:  <span class="info">{{ current_user.get_user_age }}</span> &nbsp;</p>
                         </div>
                     </div>
-                    <p style="padding: 5px;">Address: {{ current_user.get_user_address }} &nbsp;<br></p>
-                    <div class="d-xl-flex justify-content-xl-center align-items-xl-center"><button class="btn btn-primary d-xl-flex justify-content-xl-center align-items-xl-center">Logout</button></div>
+                    <p class="title">Address:  <span class="info">{{ current_user.get_user_address }}</span> &nbsp;<br></p>
+                    <div class="d-xl-flex justify-content-xl-center align-items-xl-center" style="margin-top: 0px;"><button class="btn btn-primary d-xl-flex justify-content-xl-center align-items-xl-center">Logout</button></div>
                 </div>
             </form>
         </div>
-        <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><img src="../assets/img/profileimg.png"></div>
+        <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><img src="../assets/img/profileimg.png" style="width: 450px;"></div>
     </div>
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
